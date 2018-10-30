@@ -221,7 +221,7 @@ def detectionRepetition(request):
 # 点赞
 def like(request):
     if request.method == "GET":
-        resource_id = request.GET.get('id')  # 资源的id
+       resource_id = request.GET.get('id')  # 资源的 id
         like_num = Resource.objects.filter(id=resource_id).values("like_num")  # 查询结果为对象集合
         like_num = list(like_num)[0]["like_num"]  # 点赞数
         new_like_num = like_num + 1  # 点赞数+1
@@ -233,15 +233,15 @@ def like(request):
 
 
 # 查看所有用户上传的文件
-def showAllFile(request):
-    res=list(Resource.objects.all().values())
-    print(res)
-    res=formDatatime(res)
-    print(res)
-    for i in range(len(res)):
-        print(i)
-        print(res[i])
-        print(res[i]["upload_user_id"])
-        res[i]["upload_user"]=list(Info.objects.filter(id=res[i]["upload_user_id"]).values())[0]["user_name"]
-    print(res)
-    return HttpResponse(json.dumps(res))
+    def showAllFile(request):
+        res=list(Resource.objects.all().values())
+        print(res)
+        res=formDatatime(res)
+        print(res)
+        for i in range(len(res)):
+            print(i)
+            print(res[i])
+            print(res[i]["upload_user_id"])
+            res[i]["upload_user"]=list(Info.objects.filter(id=res[i]["upload_user_id"]).values())[0]["user_name"]
+        print(res)
+        return HttpResponse(json.dumps(res))

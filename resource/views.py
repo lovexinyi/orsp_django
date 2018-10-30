@@ -11,6 +11,7 @@ from orsp_django import settings
 from utils.formatDatatime import formDatatime,timestamp_from_objectid
 from utils.objectId_time import general_obj_from_time
 from bson.objectid import ObjectId
+
 from django.db.models import Q
 # Create your views here.
 # 获取商品类型
@@ -333,3 +334,4 @@ def insertData(request):
                         two_res = Product_type_three.objects.create(**{"two_id_id": res_two.id, "product_type": z})
 
     return HttpResponse("成功")
+
